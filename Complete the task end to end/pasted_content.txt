@@ -1,0 +1,90 @@
+React Coding Challenge: Production Order Scheduler
+Overview
+Create a focused web application to manage and schedule Production Orders onto predefined Resources. The primary goal is to allow users to create orders, assign them to a resource with a time slot, and visualize the status of orders and resources.
+
+Time Frame and Submission
+Submit as a public GitHub repository
+Use clear, descriptive commit messages throughout development
+Phase 1 (Required)
+Technical Requirements
+Next.js with TypeScript
+Tailwind CSS for styling
+Tanstack Table for data display
+Recharts for data visualization
+Zod for form validation
+Playwright for E2E testing
+(No database required for Phase 1 - use in-memory state management, e.g., Zustand, Context API, simple React state)
+Core Concepts to Manage
+1. Resources (Predefined)
+For Phase 1, assume a static, predefined list of available manufacturing resources exists within the application code (no need to build CRUD for resources yet).
+Each resource should have at least a unique identifier, a name (e.g., "CNC Machine 1", "Assembly Line A"), and a status (e.g., 'Available', 'Busy') to determine if it can be scheduled.
+2. Production Orders (with Scheduling)
+This is the primary entity users will create and manage.
+A Production Order represents a job to be done
+Crucially, scheduling information should be directly associated with the order:
+Reference to the assigned Resource (using its identifier).
+The scheduled start time/date.
+The scheduled end time/date.
+Required Features
+1. Production Order Management & Scheduling
+Form (Create/Edit Order):
+Table (View Orders):
+2. Dashboard
+Create a dashboard page using Recharts
+Required Testing Approach (E2E with Playwright)
+Ensure Playwright tests cover:
+
+Order Creation: Successfully create a 'Pending' order with valid data. Show validation errors for invalid data.
+Order Editing & Scheduling: Edit an existing 'Pending' order, assign a resource and valid start/end times, change status to 'Scheduled', and verify the update in the table (including resource name).
+Scheduling Validation: Test that the form prevents scheduling if End Time is not after Start Time.
+Table Interaction: Test basic filtering of the orders table (e.g., filter by 'Scheduled' status) and verify results.
+Dashboard Display: Verify that the Order Status chart renders and reflects the current data state.
+Phase 2 (Extra Credit)
+Resource Management & Database Integration
+Implement full CRUD for Resources.
+Set up a simple SQL database (e.g., PostgreSQL, SQLite) with tables for Resource and ProductionOrder.
+Implement Prisma schema.
+Create basic CRUD API endpoints for both Resources and Orders.
+Refactor the frontend to fetch/mutate data via API endpoints.
+Basic Conflict Highlighting
+In the Order form's resource dropdown or date pickers, provide a visual cue if the selected resource/time slot potentially conflicts with an already scheduled order. (Exact conflict detection logic can be basic).
+Submission Requirements
+Push code to a public Git repository.
+Email Jesse the repository link back.
+Documentation
+README.md must include:
+
+Setup Instructions (how to install and run)
+Features Implemented (briefly describe what's working)
+Testing Approach (how to run tests, what's covered)
+Technical Decisions (key choices made, e.g., state management)
+Known Issues/Limitations (if any)
+Bonus Features (if implemented)
+Tips for Success
+✅ Focus on getting the core Production Order lifecycle (Create -> Schedule -> View) working smoothly.
+✅ Write clear, targeted tests for the main user flows.
+✅ Use TypeScript effectively for the defined data models.
+✅ Handle loading states and basic errors.
+✅ Keep code organized.
+✅ Use meaningful commit messages.
+Evaluation Criteria
+Code Quality (40%)
+TypeScript usage & Data Modeling Choices
+Code organization
+Error handling
+Component composition
+Form validation implementation
+Functionality (30%)
+Feature completeness (core order scheduling implemented)
+Data management & State Handling
+Table interactions (sort/filter)
+Chart functionality & Data Representation
+Testing (20%)
+Test coverage (key flows & validation)
+Test organization & Reliability
+Handling of different scenarios
+Documentation (10%)
+README clarity & Completeness
+Code comments
+Commit messages
+Setup instructions
